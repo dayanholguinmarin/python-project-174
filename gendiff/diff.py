@@ -4,7 +4,8 @@ import json
 def read_json(file_path):
     with open(file_path) as f:
         return json.load(f)
-    
+
+
 def generate_diff(file1, file2):
 
     dict1 = read_json(file1)
@@ -27,6 +28,5 @@ def generate_diff(file1, file2):
             result_diff.append(f"  + {key}: {val2}")
 
     result_diff.append('}')
-    
-    return "\n".join(result_diff)
 
+    return "\n".join(result_diff)

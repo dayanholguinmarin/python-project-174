@@ -33,7 +33,9 @@ def main():
     print(diff)
     # print("Contenido json del primer archivo:", data1)
     # print("Contenido json del segundo archivo:", data2)
-    # print(f"Comparing '{args.first_file}' with '{args.second_file}' using format '{args.format}'")
+    # print(f"Comparing '{args.first_file}' with
+    # '{args.second_file}' using format '{args.format}'")
+
 
 if __name__ == "__main__":
     main()
