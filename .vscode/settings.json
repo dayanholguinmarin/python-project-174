@@ -6,5 +6,8 @@
         "diccionario",
         "gendiff",
         "hexlet"
-    ]
+    ],
+    "python.defaultInterpreterPath": "python3",
+    "python.analysis.extraPaths": ["./gendiff"]
+
 }
