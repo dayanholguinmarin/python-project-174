@@ -18,12 +18,29 @@ jobs:
         run: |
           pip install uv
           make install
+      - name: Run linter (flake8)
+        run: flake8 gendiff tests
+      - name: Run tests with coverage
+        run: pytest --cov=gendiff --cov-report xml
       - name: Run linter and pytest
         run: |
           make check
       - name: Run test coverage
         run: |
           make test-coverage
+      - name: Install CodeClimate test-reporter
+        run: |
+          curl -L https://github.com/codeclimate/test-reporter/releases/latest/download/codeclimate-test-reporter-linux-amd64 \
+          -o ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+
+      - name: Before build
+        run: ./cc-test-reporter before-build
+
+      - name: After build
+        run: ./cc-test-reporter after-build --exit-code $?
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       - name: SonarQubeScan
         uses: SonarSource/sonarqube-scan-action@v6
         env:

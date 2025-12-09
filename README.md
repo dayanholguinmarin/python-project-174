@@ -8,6 +8,8 @@
 [![Code Coverage](https://qlty.sh/gh/dayanholguinmarin/projects/python-project-174/coverage.svg)](https://qlty.sh/gh/dayanholguinmarin/projects/python-project-174)
 
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/<qltcp_uASIkfIzAo9koPko>/test_coverage)](https://codeclimate.com/github/<Dayanholguinmarin>/<python-project-174>/test_coverage)
+
 # Gendiff
 
 Herramienta en Python para comparar archivos JSON y mostrar sus diferencias de manera clara y organizada.
