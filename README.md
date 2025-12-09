@@ -2,6 +2,12 @@
 [![Actions Status](https://github.com/dayanholguinmarin/python-project-174/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/dayanholguinmarin/python-project-174/actions)
 
 
+[![Maintainability](https://qlty.sh/gh/dayanholguinmarin/projects/python-project-174/maintainability.svg)](https://qlty.sh/gh/dayanholguinmarin/projects/python-project-174)
+
+
+[![Code Coverage](https://qlty.sh/gh/dayanholguinmarin/projects/python-project-174/coverage.svg)](https://qlty.sh/gh/dayanholguinmarin/projects/python-project-174)
+
+
 # Gendiff
 
 Herramienta en Python para comparar archivos JSON y mostrar sus diferencias de manera clara y organizada.
