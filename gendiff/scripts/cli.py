@@ -1,14 +1,10 @@
-
 import argparse
-import json
-
 from gendiff import generate_diff
 
 
-def read_json(file_path):
-    """Lee un archivo JSON y devuelve su contenido como diccionario."""
-    with open(file_path) as f:
-        return json.load(f)
+# def read_json(file_path):
+    # with open(file_path) as f:
+        # return json.load(f)
 
 
 def main():

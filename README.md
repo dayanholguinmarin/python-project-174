@@ -41,3 +41,16 @@ Los símbolos indican:
 + valor agregado.
 
 Sin símbolo: valor sin cambios.
+
+
+# Calculadora de diferencias (gendiff)
+
+Herramienta en Python para comparar archivos de configuración en formato **JSON** y **YAML**.
+
+---
+
+## 🚀 Uso básico
+
+```bash
+python3 -m gendiff.scripts.cli tests/fixtures/archivo1.yml tests/fixtures/archivo2.yml
+python3 -m gendiff.scripts.cli tests/fixtures/file1.json tests/fixtures/file2.json
