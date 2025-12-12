@@ -49,8 +49,100 @@ Herramienta en Python para comparar archivos de configuración en formato **JSON
 
 ---
 
-## 🚀 Uso básico
+## 🚀 uso basico
 
 ```bash
 python3 -m gendiff.scripts.cli tests/fixtures/archivo1.yml tests/fixtures/archivo2.yml
 python3 -m gendiff.scripts.cli tests/fixtures/file1.json tests/fixtures/file2.json
+
+
+
+
+🎬 Demo Asciinema
+Ver https://asciinema.org/a/rGG1v0DitnjcafuVkDnzO8TSU
+
+Herramienta en Python para comparación de ambos archivos (uno en YAML y otro en JSON) con el resultado en formato plain y stylish. .
+
+🚀 Uso básico
+Comparación de dos archivos YAML:
+python3 -m gendiff.scripts.cli tests/fixtures/archivo1.yml tests/fixtures/archivo2.yml 
+python3 -m gendiff.scripts.cli tests/fixtures/archivo1.yml tests/fixtures/archivo2.yml --format stylish o plain o json
+
+Comparación de dos archivos JSON:
+python3 -m gendiff.scripts.cli tests/fixtures/file1.json tests/fixtures/file2.json 
+python3 -m gendiff.scripts.cli tests/fixtures/file1.json tests/fixtures/file2.json --format plain o stylish o json
+🎨 Ejemplo de salida
+
+Formato stylish (por defecto)
+Código
+{
+  common: {
+    + follow: false
+      setting1: Value 1
+    - setting2: 200
+    - setting3: true
+    + setting3: null
+    + setting4: blah blah
+    + setting5: {
+          key5: value5
+      }
+      setting6: {
+          doge: {
+            - wow: 
+            + wow: so much
+          }
+          - key: value
+          + ops: vops
+      }
+  }
+  group1: {
+    - baz: bas
+    + baz: bars
+    - nest: {
+          key: value
+      }
+    + nest: str
+  }
+  - group2: {
+        abc: 12345
+    }
+  + group3: {
+        fee: 100500
+    }
+}
+
+Formato plain
+Código
+Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]
+
+
+formato json
+{
+    "host": {
+        "status": "unchanged",
+        "value": "hexlet.io"
+    },
+    "proxy": {
+        "status": "removed",
+        "value": "123.234.53.22"
+    },
+    "timeout": {
+        "status": "changed",
+        "old_value": 50,
+        "new_value": 20
+    },
+    "verbose": {
+        "status": "added",
+        "value": true
+    }
+}

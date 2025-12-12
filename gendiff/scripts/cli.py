@@ -2,11 +2,6 @@ import argparse
 from gendiff import generate_diff
 
 
-# def read_json(file_path):
-    # with open(file_path) as f:
-        # return json.load(f)
-
-
 def main():
     parser = argparse.ArgumentParser(
         description="Compares two configuration files and shows a difference."
@@ -15,22 +10,15 @@ def main():
     parser.add_argument("second_file", help="Second file to compare")
     parser.add_argument(
         "-f", "--format",
-        help="set format of output",
-        choices=["plain", "json"],
-        default="plain"
+        help="set format of output (stylish, plain, json)",
+        choices=["stylish", "plain", "json"],
+        default="stylish"
     )
 
     args = parser.parse_args()
 
-    # data1 = read_json(args.first_file)
-    # data2 = read_json(args.second_file)
-
-    diff = generate_diff(args.first_file, args.second_file)
+    diff = generate_diff(args.first_file, args.second_file, args.format)
     print(diff)
-    # print("Contenido json del primer archivo:", data1)
-    # print("Contenido json del segundo archivo:", data2)
-    # print(f"Comparing '{args.first_file}' with
-    # '{args.second_file}' using format '{args.format}'")
 
 
 if __name__ == "__main__":
