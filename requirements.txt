@@ -1,0 +1,15 @@
+# Librerías para pruebas
+pytest==7.4.4
+pytest-cov==4.1.0
+
+# Linter y estilo de código
+flake8==7.0.0
+
+# Manejo de archivos YAML
+PyYAML==6.0.2
+
+# Asciinema (para grabar y reproducir demos en terminal)
+asciinema==2.2.0
+
+# Opcional: herramientas de calidad si las usas en CI
+coverage==7.4.1
