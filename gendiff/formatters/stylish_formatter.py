@@ -2,7 +2,6 @@ def stylish(diff, depth=0):
     indent = " " * (depth * 4)
     lines = ["{"]
 
-
     for key, node in diff.items():
         status = node["status"]
 
