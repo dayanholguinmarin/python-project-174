@@ -14,4 +14,3 @@ def test_flat_yaml_diff():
 }"""
     result = generate_diff(file1, file2)
     assert result == expected
-

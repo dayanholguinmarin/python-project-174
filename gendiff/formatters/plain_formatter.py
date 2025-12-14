@@ -6,10 +6,9 @@ def plain(diff, path=""):
         status = node["status"]
 
         if status == "nested":
-            # Recursividad: bajar un nivel
             lines.extend(plain(node["value"], f"{property_path}."))
         elif status == "added":
-            value = format_value(node["value"]) # lo coloco aqui por que todos no usan el format_value
+            value = format_value(node["value"])
             lines.append(f"Property '{property_path}' was added with value: {value}")
         elif status == "removed":
             lines.append(f"Property '{property_path}' was removed")
@@ -19,7 +18,6 @@ def plain(diff, path=""):
             lines.append(
                 f"Property '{property_path}' was updated. From {old_value} to {new_value}"
             )
-
 
     return "\n".join(lines)
 
@@ -33,4 +31,3 @@ def format_value(value):
         return "null"
     else:
         return str(value).lower()
-
