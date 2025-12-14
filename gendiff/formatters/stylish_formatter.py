@@ -1,4 +1,7 @@
 def stylish(diff, depth=0):
+    if not diff:
+        return ''
+    
     indent = " " * (depth * 4)
     lines = ["{"]
 
@@ -12,7 +15,7 @@ def stylish(diff, depth=0):
         elif status == "removed":
             lines.append(f"{indent}  - {key}: {format_value(node['value'], depth + 1)}")
         elif status == "unchanged":
-            lines.append(f"{indent}    {key}: {format_value(node['value'], depth + 1)}")
+            continue
         elif status == "changed":
             old_value = node["old_value"]
             new_value = node["new_value"]
@@ -37,4 +40,10 @@ def format_value(value, depth):
             lines.append(f"{indent}    {k}: {format_value(v, depth + 1)}")
         lines.append(indent + "}")
         return "\n".join(lines)
+
+
+    if value is None:
+            return "null"
+    if isinstance(value, bool):
+            return str(value).lower()
     return str(value)

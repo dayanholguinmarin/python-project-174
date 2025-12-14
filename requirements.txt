@@ -1,6 +1,5 @@
 # Librerías para pruebas
-pytest==7.4.4
-pytest-cov==4.1.0
+pytest>=8.3.3
 
 # Linter y estilo de código
 flake8==7.0.0

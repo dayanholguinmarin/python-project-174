@@ -3,3 +3,9 @@ lint:
 
 install:
 	pip install -r requirements.txt
+
+install:
+	pip install -r requirements.txt
+
+prepare-dev:
+	pip install -r requirements-dev.txt
