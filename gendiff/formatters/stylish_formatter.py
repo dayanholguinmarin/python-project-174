@@ -2,9 +2,10 @@ def stylish(diff, depth=0):
     indent = " " * (depth * 4)
     lines = ["{"]
 
+
     for key, node in diff.items():
         status = node["status"]   # 'added', 'removed', 'unchanged', 'nested'
-        
+
 
         if status == "nested":
             lines.append(f"{indent}    {key}: {stylish(node['value'], depth + 1)}")
@@ -17,12 +18,17 @@ def stylish(diff, depth=0):
         elif status == "changed":
             old_value = node["old_value"]
             new_value = node["new_value"]
-            lines.append(f"{indent}  - {key}: {format_value(old_value, depth + 1)}")
-            lines.append(f"{indent}  + {key}: {format_value(new_value, depth + 1)}")
+            lines.append(
+                f"{indent}  - {key}: "
+                f"{format_value(old_value, depth + 1)}"
+            )
+            lines.append(
+                f"{indent}  + {key}: "
+                f"{format_value(new_value, depth + 1)}"
+            )
 
     lines.append(indent + "}")
     return "\n".join(lines)
-
 
 def format_value(value, depth):
     if isinstance(value, dict):

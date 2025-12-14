@@ -18,4 +18,3 @@ def test_json_diff():
     parsed_expected = json.loads(expected_diff)
 
     assert parsed_result == parsed_expected
-    

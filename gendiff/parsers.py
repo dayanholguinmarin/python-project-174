@@ -2,6 +2,7 @@ import json
 import yaml
 import os
 
+
 def parse_file(file_path):
     """Parses a file and returns its content as a dictionary."""
     _, ext = os.path.splitext(file_path)
