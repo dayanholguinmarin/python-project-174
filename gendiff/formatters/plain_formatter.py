@@ -1,9 +1,10 @@
 def plain(diff, path=""):
+
     lines = []
 
     for key, node in diff.items():
-        full_path = f"{path}.{key}" if path else key 
         status = node["status"]
+        full_path = f"{path}.{key}" if path else key
 
         if status == "nested":
             lines.extend(plain(node["value"], full_path))
