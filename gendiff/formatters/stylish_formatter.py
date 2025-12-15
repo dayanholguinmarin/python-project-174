@@ -1,7 +1,7 @@
 def stylish(diff, depth=0):
     if not diff:
         return ''
-    
+
     indent = " " * (depth * 4)
     lines = ["{"]
 
@@ -43,7 +43,7 @@ def format_value(value, depth):
 
 
     if value is None:
-            return "null"
+        return "null"
     if isinstance(value, bool):
-            return str(value).lower()
+        return str(value).lower()
     return str(value)
