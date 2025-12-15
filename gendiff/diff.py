@@ -16,7 +16,7 @@ def generate_diff(file1, file2, format='stylish'):
     elif format == 'json':
         return json_formatter(diff_dict)
     else:
-        raise ValueError(f"Formato desconocido: {format}")
+        raise ValueError(f"Unknown format: {format}")
 
 
 def build_diff(dict1, dict2):
@@ -38,7 +38,7 @@ def build_diff(dict1, dict2):
                 'value': build_diff(val1, val2)
             }
         elif val1 == val2:
-            result_diff_dict[key] = {'status': 'unchanged', 'value': val1}
+            continue
         else:
             result_diff_dict[key] = {
                 'status': 'changed',

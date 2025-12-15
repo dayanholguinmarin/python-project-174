@@ -2,23 +2,21 @@ def plain(diff, path=""):
     lines = []
 
     for key, node in diff.items():
+        full_path = f"{path}.{key}" if path else key 
         status = node["status"]
-        property_path = f"{path}{key}"
 
         if status == "nested":
-            nested_lines = plain(node["value"], property_path + ".")
-            if nested_lines:
-                lines.append(nested_lines)
+            lines.extend(plain(node["value"], full_path))
         elif status == "added":
             value = format_value(node["value"])
-            lines.append(f"Property '{property_path}' was added with value: {value}")
+            lines.append(f"Property '{full_path}' was added with value: {value}")
         elif status == "removed":
-            lines.append(f"Property '{property_path}' was removed")
+            lines.append(f"Property '{full_path}' was removed")
         elif status == "changed":
             old_value = format_value(node["old_value"])
             new_value = format_value(node["new_value"])
             lines.append(
-                f"Property '{property_path}' was updated. From {old_value} to {new_value}"
+                f"Property '{full_path}' was updated. From {old_value} to {new_value}"
             )
 
     return "\n".join(lines)
