@@ -1,6 +1,6 @@
 def stylish(diff, depth=0):
     if not diff:
-        return ''
+        return ""
 
     indent = " " * (depth * 4)
     lines = ["{"]

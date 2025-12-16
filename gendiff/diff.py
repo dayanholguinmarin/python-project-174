@@ -9,6 +9,9 @@ def generate_diff(file1, file2, format='stylish'):
     data2 = parse_file(file2)
     diff_dict = build_diff(data1, data2)
 
+    if not diff_dict:
+        return ""
+
     if format == 'stylish':
         return stylish(diff_dict)
     elif format == 'plain':

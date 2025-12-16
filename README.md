@@ -59,18 +59,19 @@ python3 -m gendiff.scripts.cli tests/fixtures/file1.json tests/fixtures/file2.js
 
 
 🎬 Demo Asciinema
-Ver https://asciinema.org/a/rGG1v0DitnjcafuVkDnzO8TSU
+Ver 
 
 Herramienta en Python para comparación de ambos archivos (uno en YAML y otro en JSON) con el resultado en formato plain y stylish. .
 
 🚀 Uso básico
 Comparación de dos archivos YAML:
-python3 -m gendiff.scripts.cli tests/fixtures/archivo1.yml tests/fixtures/archivo2.yml 
+python3 -m gendiff.scripts.cli tests/fixtures/archivo1.yml tests/fixtures/archivo2.yml --format stylish o plain o json
 python3 -m gendiff.scripts.cli tests/fixtures/archivo1.yml tests/fixtures/archivo2.yml --format stylish o plain o json
 
-Comparación de dos archivos JSON:
-python3 -m gendiff.scripts.cli tests/fixtures/file1.json tests/fixtures/file2.json 
-python3 -m gendiff.scripts.cli tests/fixtures/file1.json tests/fixtures/file2.json --format plain o stylish o json
+Comparación de dos archivos YAML:
+python3 -m gendiff.scripts.cli tests/fixtures/archivo1.yml tests/fixtures/archivo2.yml --format stylish o plain o json
+python3 -m gendiff.scripts.cli tests/fixtures/archivo1.yml tests/fixtures/archivo2.yml --format stylish o plain o json
+
 🎨 Ejemplo de salida
 
 Formato stylish (por defecto)

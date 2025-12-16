@@ -7,7 +7,7 @@ def plain(diff, path=""):
         full_path = f"{path}.{key}" if path else key
 
         if status == "nested":
-            lines.extend(plain(node["value"], full_path))
+            lines.extend(plain(node["value"], full_path).splitlines())
         elif status == "added":
             value = format_value(node["value"])
             lines.append(f"Property '{full_path}' was added with value: {value}")
