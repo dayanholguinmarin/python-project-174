@@ -1,4 +1,4 @@
-expected = """{
+{
     common: {
       + follow: false
       - setting2: 200
@@ -38,6 +38,4 @@ expected = """{
         }
         fee: 100500
     }
-}"""
-
-
+}

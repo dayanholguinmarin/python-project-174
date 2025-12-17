@@ -1,44 +1,36 @@
-def stylish(diff, depth=0):
-    if not diff:
-        return ""
-
-    indent = " " * (depth * 4)
+def stylish(diff, depth=1):
+    indent = "    " * depth
     lines = ["{"]
 
-    for key, node in diff.items():
+    for key in sorted(diff.keys()):
+        node = diff[key]
         status = node["status"]
 
-        if status == "nested":
-            lines.append(f"{indent}    {key}: {stylish(node['value'], depth + 1)}")
-        elif status == "added":
-            lines.append(f"{indent}  + {key}: {format_value(node['value'], depth + 1)}")
+        if status == "added":
+            lines.append(f"{indent[:-2]}+ {key}: {format_value(node['value'], depth)}")
         elif status == "removed":
-            lines.append(f"{indent}  - {key}: {format_value(node['value'], depth + 1)}")
+            lines.append(f"{indent[:-2]}- {key}: {format_value(node['value'], depth)}")
         elif status == "unchanged":
-            continue
+            lines.append(f"{indent}{key}: {format_value(node['value'], depth)}")
         elif status == "changed":
-            old_value = node["old_value"]
-            new_value = node["new_value"]
-            lines.append(
-                f"{indent}  - {key}: "
-                f"{format_value(old_value, depth + 1)}"
-            )
-            lines.append(
-                f"{indent}  + {key}: "
-                f"{format_value(new_value, depth + 1)}"
-            )
+            lines.append(f"{indent[:-2]}- {key}: {format_value(node['old_value'], depth)}")
+            lines.append(f"{indent[:-2]}+ {key}: {format_value(node['new_value'], depth)}")
+        elif status == "nested":
+            nested_value = stylish(node["value"], depth + 1)
+            lines.append(f"{indent}{key}: {nested_value}")
 
-    lines.append(indent + "}")
+    lines.append("    " * (depth - 1) + "}")
     return "\n".join(lines)
 
 
 def format_value(value, depth):
     if isinstance(value, dict):
-        indent = " " * ((depth) * 4)
+        if not value:
+            return "{}"
         lines = ["{"]
-        for k, v in value.items():
-            lines.append(f"{indent}    {k}: {format_value(v, depth + 1)}")
-        lines.append(indent + "}")
+        for k in sorted(value.keys()):
+            lines.append(f"{' ' * (depth + 1)}{k}: {format_value(value[k], depth + 1)}")
+        lines.append(f"{' ' * depth}" + "}")
         return "\n".join(lines)
 
 
