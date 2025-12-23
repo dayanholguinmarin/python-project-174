@@ -1,4 +1,3 @@
-"""def _to_str(value):
 def _to_str(value):
     if value is True:
         return "true"
