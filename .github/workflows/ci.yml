@@ -60,14 +60,3 @@ jobs:
         run: ./cc-test-reporter after-build --exit-code $?
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-
-      # 10. SonarQube
-      - name: SonarQubeScan
-        uses: SonarSource/sonarqube-scan-action@v6
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=hexlet-boilerplates_python-package
-            -Dsonar.organization=hexlet-boilerplates
-            -Dsonar.python.coverage.reportPaths=coverage.xml
