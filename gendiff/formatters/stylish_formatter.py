@@ -32,63 +32,63 @@ def stylish(diff, depth=1):
             info = node[key]
             status = info.get("status")
 
-        if status == "nested":
-            lines.append(f"{base_indent}{key}: {{")
-            lines.extend(_iter_nodes(info["value"], depth + 1))
-            lines.append(f"{base_indent}}}")
-        elif status == "unchanged":
-            val = info.get("value")
-            if isinstance(val, dict):
-                formatted = _format_literal_dict(val, depth)
-                lines.append(f"{base_indent}{key}: {formatted}")
+            if status == "nested":
+                lines.append(f"{base_indent}{key}: {{")
+                lines.extend(_iter_nodes(info["value"], depth + 1))
+                lines.append(f"{base_indent}}}")
+            elif status == "unchanged":
+                val = info.get("value")
+                if isinstance(val, dict):
+                    formatted = _format_literal_dict(val, depth)
+                    lines.append(f"{base_indent}{key}: {formatted}")
+                else:
+                    str_val = _to_str(val)
+                    sep = ":" if str_val == "" else ": "
+                    lines.append(f"{base_indent}{key}{sep}{str_val}")
+            elif status == "added":
+                val = info.get("value")
+                if isinstance(val, dict):
+                    formatted = _format_literal_dict(val, depth)
+                    lines.append(f"{base_indent[:-2]}+ {key}: {formatted}")
+                else:
+                    str_val = _to_str(val)
+                    sep = ":" if str_val == "" else ": "
+                    lines.append(f"{base_indent[:-2]}+ {key}{sep}{str_val}")
+            elif status == "removed":
+                val = info.get("value")
+                if isinstance(val, dict):
+                    formatted = _format_literal_dict(val, depth)
+                    lines.append(f"{base_indent[:-2]}- {key}: {formatted}")
+                else:
+                    str_val = _to_str(val)
+                    sep = ":" if str_val == "" else ": "
+                    lines.append(f"{base_indent[:-2]}- {key}{sep}{str_val}")
+            elif status == "changed":
+                old = info.get("old_value")
+                new = info.get("new_value")
+                if isinstance(old, dict):
+                    formatted_old = _format_literal_dict(old, depth)
+                    lines.append(f"{base_indent[:-2]}- {key}: {formatted_old}")
+                else:
+                    str_old = _to_str(old)
+                    sep = ":" if str_old == "" else ": "
+                    lines.append(f"{base_indent[:-2]}- {key}{sep}{str_old}")
+                if isinstance(new, dict):
+                    formatted_new = _format_literal_dict(new, depth)
+                    lines.append(f"{base_indent[:-2]}+ {key}: {formatted_new}")
+                else:
+                    str_new = _to_str(new)
+                    sep = ":" if str_new == "" else ": "
+                    lines.append(f"{base_indent[:-2]}+ {key}{sep}{str_new}")
             else:
-                str_val = _to_str(val)
-                sep = ":" if str_val == "" else ": "
-                lines.append(f"{base_indent}{key}{sep}{str_val}")
-        elif status == "added":
-            val = info.get("value")
-            if isinstance(val, dict):
-                formatted = _format_literal_dict(val, depth)
-                lines.append(f"{base_indent[:-2]}+ {key}: {formatted}")
-            else:
-                str_val = _to_str(val)
-                sep = ":" if str_val == "" else ": "
-                lines.append(f"{base_indent[:-2]}+ {key}{sep}{str_val}")
-        elif status == "removed":
-            val = info.get("value")
-            if isinstance(val, dict):
-                formatted = _format_literal_dict(val, depth)
-                lines.append(f"{base_indent[:-2]}- {key}: {formatted}")
-            else:
-                str_val = _to_str(val)
-                sep = ":" if str_val == "" else ": "
-                lines.append(f"{base_indent[:-2]}- {key}{sep}{str_val}")
-        elif status == "changed":
-            old = info.get("old_value")
-            new = info.get("new_value")
-            if isinstance(old, dict):
-                formatted_old = _format_literal_dict(old, depth)
-                lines.append(f"{base_indent[:-2]}- {key}: {formatted_old}")
-            else:
-                str_old = _to_str(old)
-                sep = ":" if str_old == "" else ": "
-                lines.append(f"{base_indent[:-2]}- {key}{sep}{str_old}")
-            if isinstance(new, dict):
-                formatted_new = _format_literal_dict(new, depth)
-                lines.append(f"{base_indent[:-2]}+ {key}: {formatted_new}")
-            else:
-                str_new = _to_str(new)
-                sep = ":" if str_new == "" else ": "
-                lines.append(f"{base_indent[:-2]}+ {key}{sep}{str_new}")
-        else:
-            val = info.get("value")
-            if isinstance(val, dict):
-                formatted = _format_literal_dict(val, depth)
-                lines.append(f"{base_indent}{key}: {formatted}")
-            else:
-                str_val = _to_str(val)
-                sep = ":" if str_val == "" else ": "
-                lines.append(f"{base_indent}{key}{sep}{str_val}")
+                val = info.get("value")
+                if isinstance(val, dict):
+                    formatted = _format_literal_dict(val, depth)
+                    lines.append(f"{base_indent}{key}: {formatted}")
+                else:
+                    str_val = _to_str(val)
+                    sep = ":" if str_val == "" else ": "
+                    lines.append(f"{base_indent}{key}{sep}{str_val}")
 
         return lines
 
