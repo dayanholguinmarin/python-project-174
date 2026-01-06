@@ -11,7 +11,7 @@ def test_flat_yaml_diff():
     - timeout: 50
     + timeout: 20
     + verbose: true
-  }"""
+    }"""
     result = generate_diff(file1, file2)
     assert result == expected
 
