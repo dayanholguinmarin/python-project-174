@@ -17,7 +17,7 @@ flake8 = "^7.0.0"
 [tool.poetry.group.dev.dependencies] 
 pytest = "^8.3.3" 
 coverage = "^7.4.1"
-pytest-cov = "^7.0.0"
+pytest-cov = "^4.1.0"
 
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
@@ -25,3 +25,5 @@ gendiff = "gendiff.scripts.gendiff:main"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
