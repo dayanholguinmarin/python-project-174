@@ -11,5 +11,5 @@ PyYAML==6.0.2
 coverage==7.4.1
 
 # manejo de -cov
-pytest-cov
+pytest-cov==4.1.0
 
