@@ -9,3 +9,7 @@ prepare-dev:
 
 test:
 	pytest --maxfail=1 --disable-warnings
+
+check:
+	flake8 gendiff
+	pytest --maxfail=1 --disable-warnings
