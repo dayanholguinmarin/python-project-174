@@ -12,4 +12,3 @@ coverage==7.4.1
 
 # manejo de -cov
 pytest-cov==4.1.0
-
